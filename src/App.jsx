@@ -1,10 +1,22 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { UserContext } from './context/userContext';
+import Head from './components/Head';
+import Main from './components/Main'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [email, setEmail] = useState("");
+  const [data, setData] = useState([]);
+
+  const updateData = (newData) => {
+    setData(newData);
+  }
+
+  const updateEmail = (newEmail) => {
+    setEmail(newEmail);
+  }
 
   return (
     <>
@@ -16,18 +28,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+
+
+      <Head />
+      <Main />
+      
     </>
   )
 }
