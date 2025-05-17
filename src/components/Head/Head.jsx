@@ -9,7 +9,6 @@ const Head = () => {
   
     <h2>Este es tu email: {email} </h2>
 
-
   </header>;
 };
 
