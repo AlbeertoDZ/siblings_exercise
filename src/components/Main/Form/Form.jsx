@@ -1,8 +1,8 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 
-const Form = ({updateData}) => {
-  const {updateEmail} = useContext(UserContext);
+const Form = ({ updateData }) => {
+  // const { updateEmail } = useContext(UserContext);
 
   const [values, setValues] = useState({
     nombre: "",
@@ -11,15 +11,22 @@ const Form = ({updateData}) => {
     edad: "",
   })
 
+  const handleChange = (e) => {
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value,
+      });
+    };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     updateData(values);
-
-
   }
 
 
-  return <form onSubmit={handleSubmit}>
+  return <div> 
+    <h3>Introduce tus datos</h3>
+    <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="nombre">Nombre</label>
         <input type="text" name="nombre" onChange={handleChange} placeholder="Nombre" />
@@ -36,8 +43,9 @@ const Form = ({updateData}) => {
         <label htmlFor="edad">Edad</label>
         <input type="number" name="edad" onChange={handleChange} placeholder="Edad" />
       </div>
-      <button type="submit">CREAR USUARIO 🪄</button>
+      <button type="submit">CREAR USUARIO</button>
     </form>
+  </div>
 };
 
 export default Form;
